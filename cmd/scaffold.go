@@ -6,7 +6,6 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -50,7 +49,7 @@ func scaffoldNext(appDirectory string, appType string, projectname string) error
 	cmd.Stderr = os.Stderr
 	errc := cmd.Run()
 	if errc != nil {
-		log.Fatalf("cmd.Run() failed with %s\n", err)
+		return fmt.Errorf("Nextvue Error -): Unable to scaffold "+appType+" app: %v", err)
 	}
 	// out, err := cmd.Output()
 	// if err != nil {
@@ -79,7 +78,12 @@ var scaffoldCmd = &cobra.Command{
 		//res := "Scaffolding nextjs" //pkg.scaffoldNext(version, directory)
 		errorx := scaffoldNext(directory, args[0], name)
 		fmt.Println(errorx)
-		fmt.Printf("Congratulations, your " + args[0] + " scaffolded!\n")
+		if errorx != nil {
+			return
+		} else {
+			fmt.Printf("Congratulations, your " + args[0] + " scaffolded!\n")
+		}
+
 	},
 }
 
