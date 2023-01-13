@@ -22,7 +22,7 @@ func scaffoldNext(appDirectory string, appType string, projectname string) error
 	//check if nodejs is installed
 	_, er := exec.LookPath("node")
 	if er != nil {
-		fmt.Errorf("Nextvue Error -): %v", "didn't find 'NodeJS' on this machine. Kindly install Nodejs to run\n")
+		return fmt.Errorf("Nextvue Error -): %v", "didn't find 'NodeJS' on this machine. Kindly install Nodejs to run\n")
 	}
 
 	//change directory to where the app will be scafollded
