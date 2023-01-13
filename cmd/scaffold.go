@@ -16,7 +16,7 @@ import (
 var directory string //directory to scaffold respective framework into
 var name string      //project name
 
-func scaffoldNext(appDirectory string, appType string, projectname string) error {
+func scaffoldApp(appDirectory string, appType string, projectname string) error {
 	var command string
 
 	//check if nodejs is installed
@@ -76,7 +76,7 @@ var scaffoldCmd = &cobra.Command{
 		//taskTitle, _ := cmd.Flags().GetString("title")
 		fmt.Printf("Kindly take a cofee while your " + args[0] + " app is scaffolding...\n")
 		//res := "Scaffolding nextjs" //pkg.scaffoldNext(version, directory)
-		errorx := scaffoldNext(directory, args[0], name)
+		errorx := scaffoldApp(directory, args[0], name)
 		fmt.Println(errorx)
 		if errorx != nil {
 			return
