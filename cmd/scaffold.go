@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -18,6 +19,12 @@ var name string      //project name
 
 func scaffoldNext(appDirectory string, appType string, projectname string) error {
 	var command string
+
+	//check if nodejs is installed
+	_, er := exec.LookPath("node")
+	if er != nil {
+		fmt.Errorf("Nextvue Error -): %v", "didn't find 'NodeJS' on this machine. Kindly install Nodejs to run\n")
+	}
 
 	//change directory to where the app will be scafollded
 	home, _ := os.UserHomeDir()
@@ -39,15 +46,21 @@ func scaffoldNext(appDirectory string, appType string, projectname string) error
 	cmd := exec.Command("cmd", "/C", command)
 	// The `Output` method executes the command and
 	// collects the output, returning its value
-	out, err := cmd.Output()
-	if err != nil {
-		// if there was any error, print it here
-		//fmt.Println("could not run command: ", err)
-		return fmt.Errorf("Nextvue Error -): could not run command: %v", err)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	errc := cmd.Run()
+	if errc != nil {
+		log.Fatalf("cmd.Run() failed with %s\n", err)
 	}
+	// out, err := cmd.Output()
+	// if err != nil {
+	// 	// if there was any error, print it here
+	// 	//fmt.Println("could not run command: ", err)
+	// 	return fmt.Errorf("Nextvue Error -): could not run command: %v", err)
+	// }
 
-	// otherwise, print the output from running the command
-	fmt.Println("Nextvue -): ", string(out))
+	// // otherwise, print the output from running the command
+	// fmt.Println("Nextvue -): ", string(out))
 	return nil
 }
 

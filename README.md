@@ -11,6 +11,11 @@
 
 Nextvue CLI is a go application that allows you to easily scaffold Next Js and Nuxt Js javascript framework with a single command.
 
+#### - FEATURES
+ - Checks if nodejs is installed inorder to scaffold nextjs/nuxjs app
+ - Validation for ```directory``` and ```name``` flag
+
+
 #### - LIBRARY AND DEPENDENCIES USED
  - Corbra
  - os
@@ -27,7 +32,12 @@ Nextvue CLI is a go application that allows you to easily scaffold Next Js and N
   -n, --name string       Project name
  ```
 #### - SCAFFOLDING A NEXT JS APPLICATION
+ - using the build binary file
 ``` nextvue scaffold nextjs --directory=Pictures/Ernest/GO/nextvue --name=my-nextjs-app```
+
+or
+
+```go run main.go scaffold nextjs --directory=Pictures/Ernest/GO/nextvue --name=my-nextjs-app```
 
 ```
     Kindly take a cofee while your nextjs app is scaffolding...
@@ -277,7 +287,15 @@ Nextvue CLI is a go application that allows you to easily scaffold Next Js and N
 ```
 
 #### - SCAFFOLDING A NUXT JS APPLICATION
+ - using the build binary file
 ``` nextvue scaffold nuxtjs --directory=Pictures/Ernest/GO/nextvue --name=my-nuxtjs-app```
 
+or
+
+```go run main.go scaffold nuxtjs --directory=Pictures/Ernest/GO/nextvue --name=my-nuxtjs-app```
+
+
+#### - BULDING NEXTVUE BINARY
+```go build -o ./dist```
 ---
 :scroll: **END**
