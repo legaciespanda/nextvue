@@ -296,6 +296,14 @@ or
 
 
 #### - BULDING NEXTVUE BINARY
+
 ```go build -o ./dist```
+
+#### - TODO
+ - Work on Winwos ✓
+ - work on Linux/Unix
+ - Work on Mac
+ - Suport for more javascript framework
+
 ---
 :scroll: **END**
